@@ -1,0 +1,112 @@
+version: "2.0"
+nlu:
+- intent: say_now
+  examples: |
+    - mango
+    - i eat mango
+    - you should eat mango
+- intent: FAQ/ask_timess
+  examples: |
+    - what are your timings?
+    - time the restaruant opens?
+    - what is your timing?
+    - restaruant time?
+    - open time?
+- intent: FAQ/ask_day
+  examples: |
+    - What days are you open?
+    - On what day restaurant opens?
+    - Does the restaruant close on days?
+    - On what day?
+    - Are you open today?
+- intent: FAQ/ask_cancle_reservation
+  examples: |
+    - How can I cancle reservation?
+    - Can I cancle reservation?
+    - I want to cancle
+    - cancle
+    - quit reservation
+    - I don't want
+- intent: FAQ/ask_special
+  examples: |
+    - What are the specials?
+    - what is the speciality of chef?
+    - What this restaruant offers?
+    - speciality
+    - special
+    - how good is your chef
+- intent: out_of_scope
+  examples: |
+    - I want to order food
+    - What is 2 + 2?
+    - Who's the US President?
+    - I dont want to continue
+- intent: trivago
+  examples: |
+    - I want to reserve a table
+    - I want to reserve a table for a party of [4](seats)
+    - can your reserve table
+    - reservation of table allowed
+    - reserve the table tonight
+    - reservation please
+    - i want to reserve a table
+    - i want to reserve a table for [4](seats)
+    - I want to book [2](seats) seats.
+    - book [4](seats) seats
+    - [6]("seats") seats
+    - i want to have [1]("seats")
+    - [11](seats) seats
+    - I would like to reserve [5](seats) seats
+    - [at 7:30pm](time)
+    - [in half an hour](time)
+    - [in one hour](time)
+    - [5:00pm](time)
+    - [tomorrow at 8:00pm](time)
+    - [in two hours](time)
+    - [at 6:15pm](time)
+    - at [update_time](time)
+    - [update_time](time)
+    - [4](seats) seats
+    - [6:00pm](time)
+    - [8:00pm](time)
+    - [4 pm](time)
+    - [8 PM](time) 
+    - [12 pm](time)
+    - [11 am](time)
+    - [9:15 am](time)
+    - [7:34 PM](time)
+    - [04:23 PM](time)
+    - [in an hour](time)
+    - [8:15pm](time)
+# - intent: inform
+#   examples: |
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+ 

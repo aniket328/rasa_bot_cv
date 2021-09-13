@@ -1,0 +1,263 @@
+version: "2.0"
+
+stories:
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: reservation
+#   - action: input_form
+#   - active_loop: input_form
+#   - intent: goodbye
+#   - action: utter_goodbye
+ 
+# - story: happy path 2
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
+#   - intent: reservation
+#   - action: input_formz
+#   - active_loop: input_form
+#   - intent: greet
+#   - action: utter_greet
+  
+
+# - story: FAQ
+#   steps:
+#   - intent: FAQ
+#   - action: utter_FAQ
+  
+
+# - story: happy path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: ask_time
+#   - action: utter_time
+#   - intent: ask_day
+#   - action: utter_day
+#   - intent: ask_special
+#   - action: utter_special
+#   - intent: ask_cancle-reservation
+#   - action: utter_cancle_reservation
+
+# - story: happy path 3
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: ask_day
+#   - action: utter_day
+#   - intent: ask_time
+#   - action: utter_time
+#   - intent: ask_special
+#   - action: utter_special
+#   - intent: ask_cancle-reservation
+#   - action: utter_cancle_reservation
+
+# - story: happy path 4
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: ask_cancle-reservation
+#   - action: utter_cancle_reservation
+#   - intent: ask_time
+#   - action: utter_time
+#   - intent: ask_special
+#   - action: utter_special
+#   - intent: ask_day
+#   - action: utter_day
+
+# - story: happy path 4
+#   steps:
+#   - intent: ask_special
+#   - action: utter_special
+#   - intent: ask_day
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: ask_time
+#   - action: utter_time
+  
+#   - intent: ask_cancle-reservation
+#   - action: utter_cancle_reservation
+  
+  
+
+  
+
+# # - story: sad path 1
+# #   steps:
+# #   - intent: greet
+# #   - action: utter_greet
+# #   - intent: mood_unhappy
+# #   - action: utter_cheer_up
+# #   - action: utter_did_that_help
+# #   - intent: affirm
+# #   - action: utter_happy
+
+# # - story: sad path 2
+# #   steps:
+# #   - intent: greet
+# #   - action: utter_greet
+# #   - intent: mood_unhappy
+# #   - action: utter_cheer_up
+# #   - action: utter_did_that_help
+# #   - intent: deny
+# #   - action: utter_goodbye
+
+- story: story_1
+  steps:
+  - intent: trivago
+  - action: input_form
+  - active_loop: input_form
+  - slot_was_set:
+    - requested_slot: seats
+  - slot_was_set:
+    - seats: '5'
+  - slot_was_set:
+    - requested_slot: section
+  - slot_was_set:
+    - section: AC
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_parse
+  - action: action_submit
+
+- story: story_2
+  steps:
+  - action: input_form
+  - active_loop: input_form
+  - slot_was_set:
+    - requested_slot: seats
+  - slot_was_set:
+    - seats: '11'
+  - slot_was_set:
+    - requested_slot: section
+  - intent: FAQ
+  - action: utter_FAQ
+  - action: input_form
+  - slot_was_set:
+    - requested_slot: section
+  - intent: FAQ 
+  - action: utter_FAQ
+  - action: input_form
+  - slot_was_set:
+    - requested_slot: section
+  - slot_was_set:
+    - section: AC
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_parse
+  - action: action_submit
+
+# - story: interactive_story_1
+#   steps:
+#   - intent: trivago
+#   - action: input_form
+#   - active_loop: input_form
+#   - slot_was_set:
+#     - requested_slot: seats
+#   - slot_was_set:
+#     - seats: '4'
+#   - slot_was_set:
+#     - seats: '4'
+#   - slot_was_set:
+#     - requested_slot: section
+#   - intent: setac
+#   - action: action_setAC
+#   - slot_was_set:
+#     - section: AC
+#   - action: input_form
+#   - slot_was_set:
+#     - requested_slot: time
+#   - slot_was_set:
+#     - time: 6pm
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_parse
+#   - slot_was_set:
+#     - time: null
+#   - action: input_form
+#   - active_loop: input_form
+#   - slot_was_set:
+#     - seats: '4'
+#   - slot_was_set:
+#     - section: AC
+#   - slot_was_set:
+#     - requested_slot: time
+#   - slot_was_set:
+#     - time: 8pm
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_parse
+#   - slot_was_set:
+#     - time: 08:00 PM
+#   - action: action_submit
+
+# - story: interactive_story_1
+#   steps:
+#   - intent: trivago
+#     entities:
+#     - seats: '4'
+#   - slot_was_set:
+#     - seats: '4'
+#   - action: input_form
+#   - active_loop: input_form
+#   - slot_was_set:
+#     - seats: '4'
+#   - slot_was_set:
+#     - seats: '4'
+#   - slot_was_set:
+#     - requested_slot: section
+#   - intent: setac
+#   - action: action_setAC
+#   - slot_was_set:
+#     - section: AC
+#   - action: input_form
+#   - slot_was_set:
+#     - requested_slot: time
+#   - slot_was_set:
+#     - time: 4 pm
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_parse
+#   - slot_was_set:
+#     - time: null
+#   - action: input_form
+#   - active_loop: input_form
+#   - slot_was_set:
+#     - seats: '4'
+#   - slot_was_set:
+#     - section: AC
+#   - slot_was_set:
+#     - requested_slot: time
+#   - slot_was_set:
+#     - time: in an hour
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_parse
+#   - slot_was_set:
+#     - time: null
+#   - action: input_form
+#   - active_loop: input_form
+#   - slot_was_set:
+#     - seats: '4'
+#   - slot_was_set:
+#     - section: AC
+#   - slot_was_set:
+#     - requested_slot: time
+#   - slot_was_set:
+#     - time: 8:15pm
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_parse
+#   - slot_was_set:
+#     - time: 08:00PM
+#   - action: action_submit

@@ -1,0 +1,79 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+# - inform
+- greet
+- goodbye
+- trivago
+- setac
+- FAQ:
+    is_retrieval_intent: true
+- setnac
+- bot_challenge
+- say_now
+entities:
+- seats
+- section
+- time
+slots:
+  seats:
+    type: text
+    influence_conversation: true
+  section:
+    type: text
+    influence_conversation: true
+  time:
+    type: any
+    influence_conversation: false
+responses:
+  utter_now:
+  - text: The time is {time}.
+  utter_FAQ/ask_day:
+  - text: The restaurant is open each and every day.
+  utter_FAQ/ask_cancle_reservation:
+  - text: To cancel a reservation, simply call us at +91 9876543210 and cancel your reservation
+  utter_FAQ/ask_timess:
+  - text: The restaurant opens at 7pm and closes at 10pm.
+  utter_FAQ/ask_special:
+  - text: Our chef is a master of the Italian cuisine. Our core speciality is our pasta, which is renowned throughout the city.
+  utter_greet:
+  - text: Hey! How are you?
+  utter_ask_seats:
+  - text: How many seats would you like to reserve
+  utter_ask_section:
+  - text: Which section would you like to book
+    buttons:
+    - title: AC room
+      payload: /setac
+    - title: Non-AC room
+      payload: /setnac
+  utter_ask_time:
+  - text: When would you like to book a reservation? (We are only open from 7pm to 10pm)
+  utter_submit:
+  - text: ' You have reserved {seats} seats in our {section} section for {time} Thanks!'
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request, err out of out_of_scope
+  utter_goodbye:
+  - text: "Bye"
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+actions:
+- action_parse
+- action_setAC
+- action_setNAC
+- action_submit
+- utter_FAQ
+forms:
+  input_form:
+    seats:
+    - type: from_entity
+      entity: seats
+    section:
+    - type: from_entity
+      entity: section
+    time:
+    - type: from_text

@@ -1,0 +1,105 @@
+version: "2.0"
+
+rules:
+
+- rule: parse_time
+  condition:
+  - slot_was_set:
+    - time: 'in half an hour'
+  steps:
+  - action: action_parse
+
+- rule: respond to FAQ
+  steps:
+  - intent: FAQ
+  - action: utter_FAQ
+
+- rule: Activate form
+  steps:
+  - intent: trivago
+  - action: input_form
+  - active_loop: input_form
+
+# - rule: Activate form from inform
+#   steps:
+#   - intent: inform
+#   - action: input_form
+#   - active_loop: input_form
+
+# - rule: Example of an unhappy path
+#   condition:
+#   # Condition that form is active.
+#   - active_loop: input_form
+#   steps:
+#   # This unhappy path handles the case of an intent `chitchat`.
+#   - intent: FAQ
+#   - action: utter_FAQ
+#   # Return to form after handling the `chitchat` intent
+#   - action: input_form
+#   - active_loop: input_form
+- rule: mango
+  steps:
+    - intent: say_now
+    - action: utter_now
+    
+- rule: setting AC
+  steps:
+    - intent: setac
+    - action: action_setAC
+- rule: setting non_AC
+  steps:
+    - intent: setnac
+    - action: action_setNAC
+
+
+- rule: Example of an unhappy path
+  condition:
+  # Condition that form is active.
+  - active_loop: input_form
+  steps:
+  # This unhappy path handles the case of an intent `chitchat`.
+  - intent: FAQ
+  - action: utter_FAQ
+  # Return to form after handling the `chitchat` intent
+  - action: input_form
+  - active_loop: input_form
+
+- rule: Submit form
+  condition:
+  # Condition that form is active.
+  - active_loop: input_form
+  steps:
+  # Form is deactivated
+  - action: input_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  # - action: utter_submit
+  - action: action_parse
+  - action: action_submit
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+
+- rule: out-of-scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Say Hi on greet
+  steps:
+  - intent: greet
+  - action: utter_greet

@@ -1,0 +1,27 @@
+digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class=active, fontsize=12, label=action_session_start];
+2 [class=active, fontsize=12, label=input_form];
+3 [class=active, fontsize=12, label=action_setAC];
+4 [class=active, fontsize=12, label=input_form];
+6 [class=active, fontsize=12, label=action_parse];
+13 [class=active, fontsize=12, label=action_submit];
+14 [class="intent dashed active", label="  ?  ", shape=rect];
+15 [class="intent active", fillcolor=lightblue, label="i want to reserve a table for 4", shape=rect, style=filled];
+16 [class="intent active", fillcolor=lightblue, label="/setac", shape=rect, style=filled];
+17 [class="intent active", fillcolor=lightblue, label="8:15pm", shape=rect, style=filled];
+0 -> "-1"  [class="", key=NONE, label=""];
+0 -> 1  [class=active, key=NONE, label=""];
+1 -> 15  [class=active, key=0];
+2 -> 16  [class=active, key=0];
+3 -> 4  [class=active, key=NONE, label=""];
+4 -> 6  [class=active, key=NONE, label=""];
+4 -> 17  [class=active, key=0];
+6 -> 4  [class=active, key=NONE, label=""];
+6 -> 13  [class=active, key=NONE, label=""];
+13 -> 14  [class=active, key=NONE, label=""];
+15 -> 2  [class=active, key=0];
+16 -> 3  [class=active, key=0];
+17 -> 4  [class=active, key=0];
+}
